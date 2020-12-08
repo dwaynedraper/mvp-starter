@@ -11,6 +11,19 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
+const tipSchema = new mongoose.Schema({
+  category: String,
+  title: String,
+  tip: String,
+  problem: String,
+  solution: String,
+  contributor: String
+});
+
+const tip = mongoose.model('Tip', tipSchema);
+
+
+
 var itemSchema = mongoose.Schema({
   quantity: Number,
   description: String
