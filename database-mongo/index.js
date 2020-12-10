@@ -1,15 +1,12 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
-
-var db = mongoose.connection;
-
-db.on('error', function() {
-  console.log('mongoose connection error');
-});
-
-db.once('open', function() {
-  console.log('mongoose connected successfully');
-});
+mongoose.connect('mongodb://localhost/tips', { useNewUrlParser: true })
+.then(() => {
+  console.log('Connection open!');
+})
+.catch((err) => {
+  console.log('Connection error: ');
+  console.log(err);
+})
 
 const tipSchema = new mongoose.Schema({
   category: String,
@@ -20,16 +17,21 @@ const tipSchema = new mongoose.Schema({
   contributor: String
 });
 
-const tip = mongoose.model('Tip', tipSchema);
+const Tip = mongoose.model('Tip', tipSchema);
 
-
-
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
-});
-
-var Item = mongoose.model('Item', itemSchema);
+const save = (tip) => {
+  let newTip = new Tip({
+    category: tip.category,
+    title: tip.title,
+    tip: tip.tip,
+    problem: tip.problem,
+    solution: tip.solution,
+    contributor: tip.contributor
+  })
+  Tip.save((err) => {
+    if (err) return handleError(err);
+  })
+}
 
 var selectAll = function(callback) {
   Item.find({}, function(err, items) {

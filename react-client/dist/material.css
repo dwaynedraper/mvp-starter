@@ -1,0 +1,40 @@
+const classes = {
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    width: 'calc(100% - ${drawerWidth}px)',
+    marginLeft: drawerWidth,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.backgound.default,
+    padding: theme.spacing(3),
+  }
+};
+.root {
+  display: 'flex';
+}
+.appBar {
+  width: 100% - 200px;
+  margin-left: 200px;
+}
+.drawer {
+  width: 200px;
+  flex-shrink: 0;
+}
+.drawerPaper {
+  width: 200px;
+}
+,content {
+  flex-grow: 1;
+  background-color: lightgray;
+}
