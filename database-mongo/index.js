@@ -19,7 +19,7 @@ const tipSchema = new mongoose.Schema({
 
 const Tip = mongoose.model('Tip', tipSchema);
 
-const save = (tip) => {
+const saveTip = (tip) => {
   let newTip = new Tip({
     category: tip.category,
     title: tip.title,
@@ -29,7 +29,11 @@ const save = (tip) => {
     contributor: tip.contributor
   })
   Tip.save((err) => {
-    if (err) return handleError(err);
+    if (err) {
+      return handleError(err)
+    } else {
+      console.log('Saved tip successfully.')
+    }
   })
 }
 
