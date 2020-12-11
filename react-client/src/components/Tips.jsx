@@ -3,8 +3,8 @@ import TipsItem from './TipsItem.jsx';
 
 const Tips = (props) => (
   <div>
-    <h4>You selected {props.category}.</h4>
-
+    <h4>There are {props.tips.length} tips.</h4>
+    {props.tips.map((tip, index) => <TipsItem tip={tip} key={index}/>)}
 
   </div>
 )

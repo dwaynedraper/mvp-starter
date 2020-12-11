@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/tips', { useNewUrlParser: true })
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/tips',{ useMongoClient: true })
 .then(() => {
   console.log('Connection open!');
 })
@@ -28,7 +29,7 @@ const saveTip = (tip) => {
     solution: tip.solution,
     contributor: tip.contributor
   })
-  Tip.save((err) => {
+  newTip.save((err) => {
     if (err) {
       return handleError(err)
     } else {
@@ -38,11 +39,11 @@ const saveTip = (tip) => {
 }
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Tip.find({}, function(err, tips) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, tips);
     }
   });
 };
