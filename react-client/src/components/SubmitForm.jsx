@@ -37,7 +37,10 @@ class SubmitForm extends React.Component {
       url: '/submit',
       data: tip,
     })
-    .done((res) => {console.log('ajax response success', res)})
+    .done((res) => {
+      console.log('ajax response success', res)
+      this.props.getTips();
+    })
     .fail((err) => {console.log('ajax failed', err)});
   }
   handleChangeCategory(event) {

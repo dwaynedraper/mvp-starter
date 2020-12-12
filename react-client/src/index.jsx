@@ -38,17 +38,12 @@ class App extends React.Component {
     });
   }
   // postTips() => {
-
+  // TODO: Refactor code to bring postTips out of SubmitForm to keep things consistent.
   // }
 
   componentDidMount() {
     this.getTips();
   }
-
-  // handleSubmit(tip) {
-  //   axois.post('/submit', {data: tip})
-  //   .then(response => )
-  // }
 
   render () {
     return (<div>
@@ -58,7 +53,7 @@ class App extends React.Component {
       <SubmitForm getTips={this.getTips.bind(this)} />
     </div>)
   }
-  // THIS MAY BE TOO MUCH FOR MVP. IF I GET EVERYTING WORKING I WILL COME BACK TO IT AND IMPLEMENT SIDEBAR AND INDIVIDUAL CATEGORIES, BUT FOR THE SAKE OF THE MVP SPRINT, COMMENTING THIS OUT FOR NOW.
+  // TODO : Create categories that are displayed in a sidebar
   // render () {
   //   return (
   //     <div className='root'>
