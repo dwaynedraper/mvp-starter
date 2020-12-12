@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Tips from './components/Tips.jsx';
+import SubmitForm from './components/SubmitForm.jsx';
 // import { makeStyles } from '@material-ui/core';
 // import { Drawer } from '@material-ui/core';
 // import { CssBaseline } from '@material-ui/core';
@@ -23,11 +24,10 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  getTips() {
     $.ajax({
       url: '/tips',
       success: (data) => {
-        console.log('didMount, data: ', data)
         this.setState({
           tips: data
         })
@@ -37,13 +37,25 @@ class App extends React.Component {
       }
     });
   }
+  // postTips() => {
 
+  // }
+
+  componentDidMount() {
+    this.getTips();
+  }
+
+  // handleSubmit(tip) {
+  //   axois.post('/submit', {data: tip})
+  //   .then(response => )
+  // }
 
   render () {
     return (<div>
       <h1>JavaScript - The Little Things</h1>
       <h4>Tips and Tricks for JavaScript developers</h4>
       <Tips tips={this.state.tips}/>
+      <SubmitForm getTips={this.getTips.bind(this)} />
     </div>)
   }
   // THIS MAY BE TOO MUCH FOR MVP. IF I GET EVERYTING WORKING I WILL COME BACK TO IT AND IMPLEMENT SIDEBAR AND INDIVIDUAL CATEGORIES, BUT FOR THE SAKE OF THE MVP SPRINT, COMMENTING THIS OUT FOR NOW.

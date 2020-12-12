@@ -21,6 +21,7 @@ const tipSchema = new mongoose.Schema({
 const Tip = mongoose.model('Tip', tipSchema);
 
 const saveTip = (tip) => {
+  console.log('saveTip function ran');
   let newTip = new Tip({
     category: tip.category,
     title: tip.title,
@@ -48,4 +49,5 @@ var selectAll = function(callback) {
   });
 };
 
+module.exports.saveTip = saveTip;
 module.exports.selectAll = selectAll;
